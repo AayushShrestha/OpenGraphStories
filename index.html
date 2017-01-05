@@ -32,9 +32,12 @@
     FB.api(
        'https://graph.facebook.com/me/og.likes',
        'post',
-       { object: obj,
-         privacy: {'value': 'SELF'} },
+       { 
+       		object: obj,
+         	privacy: {'value': 'SELF'} 
+     	},
        function(response) {
+
          if (!response) {
            alert('Error occurred.');
          } else if (response.error) {
@@ -47,6 +50,39 @@
              'Story created.  ID is ' +
              response.id + '</a>';
          }
+
+       }
+    );
+
+  };
+
+
+  function postRead() {
+
+  	var obj = document.getElementById('url').value;
+
+    FB.api(
+       'https://graph.facebook.com/me/books.reads',
+       'post',
+       { 
+       		object: obj,
+         	privacy: {'value': 'SELF'} 
+     	},
+       function(response) {
+
+         if (!response) {
+           alert('Error occurred.');
+         } else if (response.error) {
+           document.getElementById('result').innerHTML =
+             'Error: ' + response.error.message;
+         } else {
+           document.getElementById('result').innerHTML =
+             '<a href=\"https://www.facebook.com/me/activity/' +
+             response.id + '\">' +
+             'Story created.  ID is ' +
+             response.id + '</a>';
+         }
+         
        }
     );
 
