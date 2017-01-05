@@ -27,7 +27,7 @@
 
   function postLike() {
 
-  	var obj = document.getElementByID('url').val();
+  	var obj = document.getElementById('url').value;
 
     FB.api(
        'https://graph.facebook.com/me/og.likes',
